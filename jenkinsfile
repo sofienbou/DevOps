@@ -30,9 +30,9 @@ pipeline {
 
         stage('Analyse SonarQube') {
             steps {
-                withSonarQubeEnv('Nom_de_votre_installe_SonarQube') {
+             
                     sh 'mvn sonar:sonar'
-                }
+                
             }
         }
     }
