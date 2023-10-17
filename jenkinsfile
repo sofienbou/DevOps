@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello World') {
+            steps {
+                script {
+                    echo 'Hello, World!'
+                }
+            }
+        }
+
+        stage('Git Checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/sofienbou/DevOps'
+             
+            }
+        }
+    }
+}
