@@ -31,7 +31,7 @@ pipeline {
         stage('Analyse SonarQube') {
             steps {
              
-                    sh 'mvn sonar:sonar'
+                    sh 'mvn admin:sonar'
                 
             }
         }
