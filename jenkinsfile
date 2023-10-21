@@ -13,10 +13,10 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 git branch: 'master', url: 'https://github.com/sofienbou/DevOps'
-             
             }
         }
-   stage('Nettoyage') {
+
+        stage('Nettoyage') {
             steps {
                 sh 'mvn clean'
             }
@@ -30,13 +30,13 @@ pipeline {
 
         stage('Analyse SonarQube') {
             steps {
-            withSonarQubeEnv(installationName: 'sq1') { 
-          sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
-                
+                withSonarQubeEnv(installationName: 'sq1') {
+                    sh './mvnw sonar:sonar'
+                }
             }
         }
     }
-    
+
     post {
         success {
             echo 'Le pipeline a réussi. Les étapes de nettoyage, de compilation et d\'analyse SonarQube sont terminées avec succès.'
