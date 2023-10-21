@@ -31,7 +31,7 @@ pipeline {
         stage('Analyse SonarQube') {
             steps {
                 withSonarQubeEnv(installationName: 'sq1') {
-                    sh './mvnw sonar:sonar'
+                    sh './mvnw admin:sonar'
                 }
             }
         }
