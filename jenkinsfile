@@ -30,8 +30,8 @@ pipeline {
 
         stage('Analyse SonarQube') {
             steps {
-             withSonarQubeEnv(' http://192.168.56.10:9000') {
-                    sh 'mvn admin:sonar'
+            withSonarQubeEnv(installationName: 'sq1') { 
+          sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
                 
             }
         }
