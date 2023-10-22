@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello World') {
+        stage('Hi!') {
             steps {
                 script {
                     echo 'Hello, World!'
@@ -16,19 +16,19 @@ pipeline {
             }
         }
 
-        stage('Nettoyage') {
+        stage('Clean') {
             steps {
                 sh 'mvn clean'
             }
         }
 
-        stage('Compilation') {
+        stage('Compile') {
             steps {
                 sh 'mvn compile'
             }
         }
 
-        stage('Analyse SonarQube') {
+        stage('SonarQube') {
             steps {
                 withSonarQubeEnv(installationName: 'DevOps') {
                   sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
