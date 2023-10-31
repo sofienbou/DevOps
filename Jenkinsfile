@@ -12,7 +12,7 @@ pipeline {
 
         stage('Git Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/sofienbou/DevOps'
+                git branch: 'sofien', url: 'https://github.com/sofienbou/DevOps'
             }
         }
 
