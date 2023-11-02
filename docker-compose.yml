@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'  # Mettez cette valeur entre guillemets
+    ports:
+      - "3306:3306"  # Port de la base de données MySQL
+    volumes:
+      - db:/var/lib/mysql
+
+  achat-app:
+    depends_on:
+      - mysql
+    image: lesliemonthe/achat:1.0  # L'image Docker de votre application
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  # Typo : environment (pas environement)
+    ports:
+      - "8089:8089"  # Port de l'application Spring Boot
+    stdin_open: true
+    tty: true
+
+volumes:
+  db:
