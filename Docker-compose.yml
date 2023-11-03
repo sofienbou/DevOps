@@ -13,12 +13,11 @@ services:
   achat-backend:
     depends_on:
       - mysqldb
-    build: achwekharizi1998/devops-project1.2
+    build: achwekharizi1998/devops-project:1.2
     restart: on-failure
     ports:
       - "6868:6868"
     stdin_open: true
     tty: true
-
 
 
