@@ -40,6 +40,32 @@ pipeline {
                 sh 'mvn deploy -DskipTests'
             }
         }
+         stage('Building Image') {
+            steps {
+                script {
+                    def dockerImageName = 'achat:1.0'  // Nom de l'image Docker
+                    sh "docker build -t $dockerImageName ."
+                }
+            }
+        }
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    def dockerhubUsername = 'sofienlking'
+                    def dockerhubPassword = 'Sofienbentarekbou7'
+                    def dockerImageName = 'achat:1.0'
+                    sh "docker login -u $dockerhubUsername -p $dockerhubPassword"
+                    sh "docker tag $dockerImageName $dockerhubUsername/$dockerImageName"
+                    sh "docker push $dockerhubUsername/$dockerImageName"
+                }
+            }
+        }
+        stage('Run Docker Compose') {
+            steps {
+                sh 'docker compose up -d'
+            }
+        }
+        
     }
 
     post {
