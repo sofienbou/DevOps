@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-          stage('Compile') {
+          stage('Unit test') {
             steps {
                 sh 'mvn test'
             }
