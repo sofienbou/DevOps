@@ -1,24 +1,24 @@
 version: "3.8"
 services:
   mysqldb:
-    image: mysql:5.7
+    image: mysql:5.5
     restart: unless-stopped
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     ports:
-      - "3307:3306"
+      - "3307:3307"
     volumes:
       - db:/var/lib/mysql
 
-  timesheet-backend:
+  achat-backend:
     depends_on:
       - mysqldb
-    build: ./
+    build: achwekharizi1998/devops-project1.2
     restart: on-failure
     ports:
-      - "6868:8082"
-    volumes:
-      - .m2:/root/.m2
+      - "6868:6868"
     stdin_open: true
     tty: true
 
-volumes:
-  db:
+
+
