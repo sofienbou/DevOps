@@ -21,6 +21,7 @@ pipeline {
                 sh 'mvn clean'
             }
         }
+        
 
         stage('Compile') {
             steps {
@@ -33,6 +34,11 @@ pipeline {
                 withSonarQubeEnv(installationName: 'DevOps') {
                   sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                 }
+            }
+        }
+          stage('Compile') {
+            steps {
+                sh 'mvn test'
             }
         }
         stage('Nexus'){
