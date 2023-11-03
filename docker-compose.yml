@@ -14,7 +14,7 @@ services:
   achat-app:
     depends_on:
       - mysql
-    image: sofien/achat:1.0  # L'image Docker de votre application
+    image: sofienlking/achat:1.0  # L'image Docker de votre application
     restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword  # Typo : environment (pas environement)
