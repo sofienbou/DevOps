@@ -2,13 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Hi!') {
-            steps {
-                script {
-                    echo 'Hello, World!'
-                }
-            }
-        }
+
 
         stage('Git Checkout') {
             steps {
@@ -71,12 +65,21 @@ pipeline {
                 sh 'docker compose up -d'
             }
         }
-        
+        stage('Prometheus') {
+            steps {
+                sh 'docker start prometheus'
+            }
+        }
+        stage('Grafana') {
+            steps {
+                sh 'docker start grafana'
+            }
+        }
     }
 
     post {
         success {
-            echo 'Le pipeline a réussi. Les étapes de nettoyage, de compilation et d\'analyse SonarQube sont terminées avec succès.'
+            echo 'Le pipeline a réussi. Les étapes sont terminées avec succès.'
         }
         failure {
             echo 'Le pipeline a échoué. Veuillez vérifier les étapes précédentes pour plus de détails.'
