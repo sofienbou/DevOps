@@ -9,7 +9,17 @@ services:
       - "3306:3306"
     volumes:
       - db:/var/lib/mysql
-
+  achat-backend:
+      depends_on:
+        - mysqldb
+      image: achwekharizi1998/devops_project:1.2
+      restart: on-failure
+      environment:
+        MYSQL_ROOT_PASSWORD: rootpassword
+      ports:
+        - "6868:6868"
+      stdin_open: true
+      tty: true
 volumes:
   db:
 
