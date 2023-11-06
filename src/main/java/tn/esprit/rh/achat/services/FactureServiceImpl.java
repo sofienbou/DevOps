@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.rh.achat.entities.*;
 import tn.esprit.rh.achat.repositories.*;
+import tn.esprit.rh.achat.entities.*;
+import tn.esprit.rh.achat.repositories.*;
 
 import javax.transaction.Transactional;
 import java.util.Date;
@@ -17,15 +19,15 @@ import java.util.Set;
 public class FactureServiceImpl implements IFactureService {
 
 	@Autowired
-	FactureRepository factureRepository;
+    FactureRepository factureRepository;
 	@Autowired
-	OperateurRepository operateurRepository;
+    OperateurRepository operateurRepository;
 	@Autowired
-	DetailFactureRepository detailFactureRepository;
+    DetailFactureRepository detailFactureRepository;
 	@Autowired
-	FournisseurRepository fournisseurRepository;
+    FournisseurRepository fournisseurRepository;
 	@Autowired
-	ProduitRepository produitRepository;
+    ProduitRepository produitRepository;
     @Autowired
     ReglementServiceImpl reglementService;
 	
