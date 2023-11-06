@@ -9,6 +9,11 @@ pipeline {
                 git branch: 'sofien', url: 'https://github.com/sofienbou/DevOps'
             }
         }
+        stage('Starting Containers'){
+            steps {
+               sh 'docker start sonarqube nexus '
+            }
+        }
 
         stage('Clean') {
             steps {
