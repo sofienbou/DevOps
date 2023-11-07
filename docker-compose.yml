@@ -5,7 +5,6 @@ services:
     image: mysql:5.7
     restart: unless-stopped
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'  # Mettez cette valeur entre guillemets
       MYSQL_ROOT_PASSWORD: 
       MYSQL_DATABASE: achatdb
     ports:
