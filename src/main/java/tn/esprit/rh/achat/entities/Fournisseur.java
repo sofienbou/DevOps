@@ -14,36 +14,31 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@ToString
+@FieldDefaults(level = AccessLevel.PUBLIC)
 public class Fournisseur implements Serializable {
 
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFournisseur;
 	private String code;
 	private String libelle;
-	@Enumerated(EnumType.STRING)
-	private CategorieFournisseur  categorieFournisseur;
-	@OneToMany(mappedBy="fournisseur")
-	@JsonIgnore
-	private Set<Facture> factures;
-    @ManyToMany
-    @JsonIgnore
-    private Set<SecteurActivite> secteurActivites;
-    @OneToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
-    private DetailFournisseur detailFournisseur;
     
 
+	public Fournisseur(String code , String libelle){
+		this.code = code;
+		this.libelle = libelle;
+	}
 	
 }

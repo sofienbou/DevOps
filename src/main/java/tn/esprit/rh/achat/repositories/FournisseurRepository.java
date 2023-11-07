@@ -8,4 +8,6 @@ import tn.esprit.rh.achat.entities.Fournisseur;
 public interface FournisseurRepository extends JpaRepository<Fournisseur, Long> {
     Fournisseur findByCode(String code);
 
+    Fournisseur findFournisseurByIdFournisseur(Long idFournisseur);
+
 }
