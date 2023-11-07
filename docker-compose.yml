@@ -3,8 +3,10 @@ services:
   mysqldb:
     image: mysql:5.7
     environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_DATABASE=achat_db
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: achatdb
+      MYSQL_USER: achatuser
+      MYSQL_PASSWORD: achatpass
     ports:
       - "3308:3306"
     volumes:
