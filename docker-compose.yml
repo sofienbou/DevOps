@@ -5,22 +5,20 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: achatdb
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 
     ports:
       - "3308:3306"
     volumes:
       - db:/var/lib/mysql
   achat-backend:
-      depends_on:
-        - mysqldb
-      image: achwekharizi1998/devops_project:1.2
-      environment:
-        MYSQL_ROOT_PASSWORD: rootpassword
-      ports:
-        - "8089:8089"
-      stdin_open: true
-      tty: true
+    depends_on:
+      - mysqldb
+    image: achwekharizi1998/devops_project:1.2
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "8089:8089"
+    stdin_open: true
+    tty: true
 volumes:
   db:
 
