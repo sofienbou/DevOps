@@ -9,6 +9,11 @@ pipeline {
                 git branch: 'sofien', url: 'https://github.com/sofienbou/DevOps'
             }
         }
+        stage('Starting Containers'){
+            steps {
+               sh 'docker start sonarqube nexus '
+            }
+        }
 
         stage('Clean') {
             steps {
@@ -77,12 +82,17 @@ pipeline {
         }
     }
 
-    post {
+  post {
         success {
-            echo 'Le pipeline a réussi. Les étapes sont terminées avec succès.'
+          
+                     emailext  body: 'Hi Sofien , your pipeline is built with sucess !!', recipientProviders: [buildUser()], subject: 'Build success', to: 'sofien.bouattour@esprit.tn'
+            echo "Success: Build success"
         }
-        failure {
-            echo 'Le pipeline a échoué. Veuillez vérifier les étapes précédentes pour plus de détails.'
+         failure {
+               
+              emailext  body: 'Hi Sofien ,your pipeline build is failed !!', recipientProviders: [buildUser()], subject: 'Build failed', to: 'sofien.bouattour@esprit.tn'
+
+            echo 'Failed: Build failed'
         }
     }
 }
