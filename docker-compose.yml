@@ -1,15 +1,17 @@
 version: "3.8"
 services:
   mysqldb:
-    image: mysql:5.7
-    restart: unless-stopped
+    image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: achatdb
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE:achatdb
     ports:
       - "3306:3306"
     volumes:
       - db:/var/lib/mysql
+    networks:
+      - my-network
+    restart: unless-stopped
   achat-backend:
     depends_on:
       - mysqldb
@@ -17,8 +19,17 @@ services:
     restart: on-failure
     ports:
       - "8089:8089"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysqldb:3306/achatdb?useUnicode=true&createDatabaseIfNotExist=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+    networks:
+        - my-network
     stdin_open: true
     tty: true
 volumes:
   db:
+
+networks:
+  my-network:
 
