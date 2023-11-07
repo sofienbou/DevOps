@@ -85,12 +85,12 @@ pipeline {
   post {
         success {
           
-                     emailext  body: 'Hi Sofien , your pipeline is built with sucess !!', recipientProviders: [buildUser()], subject: 'Build success', to: 'lina.khammeri@esprit.tn'
+                     emailext  body: 'Hi Sofien , your pipeline is built with sucess !!', recipientProviders: [buildUser()], subject: 'Build success', to: 'sofien.bouattour@esprit.tn'
             echo "Success: Build success"
         }
          failure {
                
-              emailext  body: 'Hi Sofien ,your pipeline build is failed !!', recipientProviders: [buildUser()], subject: 'Build failed', to: 'lina.khammeri@esprit.tn'
+              emailext  body: 'Hi Sofien ,your pipeline build is failed !!', recipientProviders: [buildUser()], subject: 'Build failed', to: 'sofien.bouattour@esprit.tn'
 
             echo 'Failed: Build failed'
         }
