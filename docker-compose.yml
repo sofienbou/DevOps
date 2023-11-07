@@ -5,8 +5,8 @@ services:
     image: mysql:5.7
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD:root 
-      MYSQL_DATABASE: achatdb
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'achatdb'
     ports:
       - 3306:3306  # Port de la base de données MySQL
     volumes:
