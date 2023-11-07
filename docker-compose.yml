@@ -2,6 +2,7 @@ version: "3.8"
 services:
   mysqldb:
     image: mysql:5.7
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: achatdb
@@ -13,8 +14,7 @@ services:
     depends_on:
       - mysqldb
     image: achwekharizi1998/devops_project:1.2
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
+    restart: on-failure
     ports:
       - "8089:8089"
     stdin_open: true
