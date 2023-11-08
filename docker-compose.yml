@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_ROOT_PASSWORD: your_password_here  # Provide a root password
       MYSQL_DATABASE: achatdb
     ports:
       - 3306:3306  # Port de la base de données MySQL
@@ -29,11 +29,10 @@ services:
       }'
     stdin_open: true
     tty: true
-    
-   angular-app:
+
+  angular-app:
     image: achwekharizi1998/achat-front:angular
     container_name: devops_project_angular
-
     ports:
       - "80:80"
     depends_on:
@@ -42,6 +41,5 @@ services:
       - my-network
     restart: unless-stopped
 
-    
 volumes:
   db:
