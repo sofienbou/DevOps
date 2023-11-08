@@ -37,8 +37,6 @@ services:
       - "80:80"
     depends_on:
       - achat-app
-    networks:
-      - my-network
     restart: unless-stopped
 
 volumes:
