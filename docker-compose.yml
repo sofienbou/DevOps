@@ -31,7 +31,7 @@ services:
     tty: true
 
   angular-app:
-    image: achwekharizi1998/achat-front:angular
+    image: achwekharizi1998/DevOps:angular
     container_name: devops_project_angular
     ports:
       - "80:80"
