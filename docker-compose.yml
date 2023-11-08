@@ -27,9 +27,21 @@ services:
         "spring.jpa.hibernate.ddl-auto": "update",
         "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect"
       }'
-
     stdin_open: true
     tty: true
+    
+   angular-app:
+    image: achwekharizi1998/devops_project:angular
+    container_name: devops_project_angular
 
+    ports:
+      - "80:80"
+    depends_on:
+      - achat-app
+    networks:
+      - my-network
+    restart: unless-stopped
+
+    
 volumes:
   db:
